@@ -1,0 +1,31 @@
+package cn.edu.fzu.sm.vot.vot;
+
+public class UserDelServlet {
+	String sql="delete from user where id='"+r.getId()+"'";//删除desql语句
+	Statement stmt;
+	try {
+		stmt=dbutill.getConn().createStatement();
+		stmt.executeUpdate(sql);//删除
+		queryRoomInfo();//刷新表格
+		JOptionPane.showMessageDialog(null, "删除成功");
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}//获取数据库连接，并创建一个数据库连接状态
+	String sql="delete from room where rid='"+r.getrId()+"'";//删除desql语句
+					Statement stmt;
+					try {
+						stmt=dbutill.getConn().createStatement();
+						stmt.executeUpdate(sql);//删除
+						queryRoomInfo();//刷新表格
+						JOptionPane.showMessageDialog(null, "删除成功");
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}//获取数据库连接，并创建一个数据库连接状态
+				}
+			 }else{
+				 JOptionPane.showMessageDialog(null, "您不能执行该功能！");
+			 }
+		}
+}

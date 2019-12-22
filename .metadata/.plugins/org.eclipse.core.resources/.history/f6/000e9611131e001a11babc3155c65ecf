@@ -1,0 +1,53 @@
+package cn.edu.fzu.sm.vot.vot;
+
+public class Student {
+	private String sId;//学号
+	private String sName;//姓名
+	private String sSex;//性别
+	private String sBirthday;//出生日期
+	private String sCity;//所在城市
+	private String sHobby;//兴趣爱好
+	private String sPhone;//联系方式
+	public String getsId() {
+		return sId;
+	}
+	public void setsId(String sId) {
+		this.sId = sId;
+	}
+	public String getsName() {
+		return sName;
+	}
+	public void setsName(String sName) {
+		this.sName = sName;
+	}
+	public String getsSex() {
+		return sSex;
+	}
+	public void setsSex(String sSex) {
+		this.sSex = sSex;
+	}
+	public String getsBirthday() {
+		return sBirthday;
+	}
+	public void setsBirthday(String sBirthday) {
+		this.sBirthday = sBirthday;
+	}
+	public String getsCity() {
+		return sCity;
+	}
+	public void setsCity(String sCity) {
+		this.sCity = sCity;
+	}
+	public String getsHobby() {
+		return sHobby;
+	}
+	public void setsHobby(String sHobby) {
+		this.sHobby = sHobby;
+	}
+	public String getsPhone() {
+		return sPhone;
+	}
+	public void setsPhone(String sPhone) {
+		this.sPhone = sPhone;
+	}
+}

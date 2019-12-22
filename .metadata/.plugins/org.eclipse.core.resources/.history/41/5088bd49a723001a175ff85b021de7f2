@@ -1,0 +1,8 @@
+package cn.edu.fzu.sm.vot.server;
+
+import javax.servlet.annotation.WebServlet;
+
+@WebServlet("/RoleEditServlet")
+public class RoleEditServlet {
+
+}

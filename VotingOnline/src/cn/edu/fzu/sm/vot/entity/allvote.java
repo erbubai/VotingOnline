@@ -1,0 +1,81 @@
+package cn.edu.fzu.sm.vot.entity;
+
+public class allvote {
+	private int vId;
+	private String vTitle;
+	private String vName;
+	private String vNumber;
+	private String vTime;
+	private String vA;
+	private String vANumber;
+	private String vB;
+	private String vBNumber;
+	private String vC;
+	private String vCNumber;
+	public String getvTitle() {
+		return vTitle;
+	}
+	public void setvTitle(String vTitle) {
+		this.vTitle = vTitle;
+	}
+	public String getvName() {
+		return vName;
+	}
+	public void setvName(String vName) {
+		this.vName = vName;
+	}
+	public String getvNumber() {
+		return vNumber;
+	}
+	public void setvNumber(String vNumber) {
+		this.vNumber = vNumber;
+	}
+	public String getvTime() {
+		return vTime;
+	}
+	public void setvTime(String vTime) {
+		this.vTime = vTime;
+	}
+	public String getvA() {
+		return vA;
+	}
+	public void setvA(String vA) {
+		this.vA = vA;
+	}
+	public String getvANumber() {
+		return vANumber;
+	}
+	public void setvANumber(String vANumber) {
+		this.vANumber = vANumber;
+	}
+	public String getvB() {
+		return vB;
+	}
+	public void setvB(String vB) {
+		this.vB = vB;
+	}
+	public String getvBNumber() {
+		return vBNumber;
+	}
+	public void setvBNumber(String vBNumber) {
+		this.vBNumber = vBNumber;
+	}
+	public String getvC() {
+		return vC;
+	}
+	public void setvC(String vC) {
+		this.vC = vC;
+	}
+	public String getvCNumber() {
+		return vCNumber;
+	}
+	public void setvCNumber(String vCNumber) {
+		this.vCNumber = vCNumber;
+	}
+	public int getvId() {
+		return vId;
+	}
+	public void setvId(int vId) {
+		this.vId = vId;
+	}
+}

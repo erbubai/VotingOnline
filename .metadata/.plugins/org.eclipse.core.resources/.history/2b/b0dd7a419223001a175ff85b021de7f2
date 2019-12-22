@@ -1,0 +1,59 @@
+package cn.edu.fzu.sm.vot.user;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import cn.edu.fzu.sm.vot.entity.user;
+import cn.edu.fzu.sm.vot.util.dbutil;
+
+@WebServlet("/UserQueryServlet")
+public class UserQueryServlet extends HttpServlet{
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		PrintWriter out=resp.getWriter();
+		req.setCharacterEncoding("UTF-8");
+		String username=req.getParameter("username");
+		
+		String sql="select id,username,name,sex,phone,time from user where username='"+username+"'";
+		try{
+			Statement stmt=dbutil.getConn().createStatement();//获取数据库连接，并创建一个数据库连接状态
+			ResultSet rs = stmt.executeQuery(sql);//执行数据库的查询语句
+			List<user> use=null;
+			while(rs.next()){//至少有一条记录
+				if(use==null)
+				{
+					use=new ArrayList<user>();
+				}
+				user u=new user();
+				u.setId(rs.getInt("id"));
+				u.setUsername(rs.getString("username"));
+				u.setName(rs.getString("name"));
+				u.setSex(rs.getString("sex"));
+				u.setPhone(rs.getString("phone"));
+				u.setTime(rs.getString("time"));
+				use.add(u);
+			}
+			req.setAttribute("userlist",use);
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(req,resp);
+	}
+}

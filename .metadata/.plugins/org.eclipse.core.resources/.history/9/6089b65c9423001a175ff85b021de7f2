@@ -1,0 +1,5 @@
+package cn.edu.fzu.sm.vot.entity;
+
+public class Filter implements Filter{
+
+}

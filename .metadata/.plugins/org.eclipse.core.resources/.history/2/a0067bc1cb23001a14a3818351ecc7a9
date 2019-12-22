@@ -1,0 +1,5 @@
+package cn.edu.fzu.sm.vot.role;
+
+public class RoleDelServlet {
+
+}

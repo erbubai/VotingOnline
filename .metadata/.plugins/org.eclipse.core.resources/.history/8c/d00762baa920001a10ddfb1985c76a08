@@ -1,0 +1,42 @@
+package cn.edu.fzu.sm.vot.user;
+
+import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import cn.edu.fzu.sm.vot.util.dbutil;
+
+@WebServlet("/LoginServlet")
+public class LoginServlet extends HttpServlet {//登陆的HttpServlet
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		String username=req.getParameter("username");//获取网页传递过来的参数，该参数为提交表单时获取的
+		String password=req.getParameter("password");
+		
+		String sql="select username,password,name from user where username='"+username+"'and password='"+password+"'";
+		String sqll="select username,password,name from server where username='"+username+"'and password='"+password+"'";
+		try{
+			Statement stmt=dbutil.getConn().createStatement();//获取数据库连接，并创建一个数据库连接状态
+			ResultSet rs = stmt.executeQuery(sql);//执行数据库的查询语句
+			if(rs.next()){//至少有一条记录
+				req.getRequestDispatcher("homepage.jsp").forward(req, resp);//登陆成功，跳转到主页面
+			}else {//没有任何查询结果
+				req.setAttribute("msg", "用户名或者密码错误!");//返回一个错误消息
+				req.getRequestDispatcher("login.jsp").forward(req, resp);
+			}
+		}catch (Exception e){
+			
+		}
+	}
+	@Override
+		protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+				throws ServletException, IOException {
+		doGet(req,resp);//调用doGet,统一用doGet函数来处理业务
+		}
+}

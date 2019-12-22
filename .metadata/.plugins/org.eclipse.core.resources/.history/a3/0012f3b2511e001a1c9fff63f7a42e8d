@@ -1,0 +1,52 @@
+package cn.edu.fzu.sm.vot.vot;
+
+import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.swing.JOptionPane;
+
+import cn.edu.fzu.sm.vot.util.dbutil;
+
+@WebServlet("/StudentInfoServlet")
+public class StudentInfoServlet extends HttpServlet{//登陆的HttpServlet
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		req.setCharacterEncoding("utf-8");//设置请求的编码方式
+		resp.setCharacterEncoding("utf-8");//设置响应的编码方式
+		String sname=req.getParameter("sName");//获取网页传递过来的参数，该参数为提交表单时获取的
+		
+		String sql="select sid,sname,ssex,sbirthday,scity,shobby,sphone from student where sname='"+sname+"'and password='";
+		try{
+			Statement stmt=dbutil.getConn().createStatement();//获取数据库连接，并创建一个数据库连接状态
+			ResultSet rs = stmt.executeQuery(sql);//执行数据库的查询语句
+			//List<Student> students new ArrayList<Student>();
+			while(rs.next()){//至少有一条记录
+				Stdent s=new Student();//新建一个学生信息对象
+				s.setsId(rs.getString(1));
+				s.setsName(rs.getString(2));
+				s.setsSex(rs.getString(3));
+				s.setsBirthday(rs.getString(4));
+				s.setsCity(rs.getString(5));
+				s.setsHobby(rs.getString(6));
+				s.setsPhone(rs.getString(7));
+				//students.add(s);//将学生信息添加到学生列表中
+			}
+		}catch (Exception e){
+			
+		}
+	}
+	@Override
+		protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+				throws ServletException, IOException {
+		doGet(req,resp);//调用doGet,统一用doGet函数来处理业务
+		}
+}
